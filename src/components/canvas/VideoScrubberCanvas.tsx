@@ -158,10 +158,10 @@ export const VideoScrubberCanvas: React.FC = () => {
       scheduleTick();
     };
 
-    // Preload and GPU-warm all 11 WebP frames
+    // Preload frame_02 immediately and defer remaining frames by 1.2s so opening video gets 100% network priority
     if (!preloadStarted) {
       preloadStarted = true;
-      for (let i = 2; i <= 12; i++) {
+      const loadFrame = (i: number) => {
         const idx = i - 2;
         const numStr = i.toString().padStart(2, '0');
         const img = new Image();
@@ -215,7 +215,14 @@ export const VideoScrubberCanvas: React.FC = () => {
         img.onerror = () => {
           img.src = `/frames/frame_${numStr}.jpg`;
         };
-      }
+      };
+
+      loadFrame(2);
+      window.setTimeout(() => {
+        for (let i = 3; i <= 12; i++) {
+          loadFrame(i);
+        }
+      }, 1200);
     }
 
     updateCanvasSize(true);
