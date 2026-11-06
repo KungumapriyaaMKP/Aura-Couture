@@ -57,11 +57,13 @@ export const App: React.FC = () => {
           const rawProgress = totalScrollable > 0 ? currentScroll / totalScrollable : 0;
           const progress = Math.max(0, Math.min(1, rawProgress));
 
-          if (
-            Math.abs(progress - lastProgress) >= 0.005 ||
+          const shouldUpdateProgress =
             progress === 0 ||
-            progress === 1
-          ) {
+            progress === 1 ||
+            ((progress >= 0.82 || lastProgress >= 0.82) &&
+              Math.abs(progress - lastProgress) >= 0.005);
+
+          if (shouldUpdateProgress) {
             lastProgress = progress;
             setScrollProgress(progress);
           }
@@ -96,7 +98,7 @@ export const App: React.FC = () => {
           <BoutiqueCanvas />
           <ChapterIndicators />
           <div
-            className="relative z-0 w-full pointer-events-auto h-[800vh] md:h-[1200vh] min-h-[5600px] md:min-h-[12000px]"
+            className="relative z-0 w-full pointer-events-auto h-[620vh] md:h-[1100vh] min-h-[4200px] md:min-h-[10500px]"
           />
         </>
       )}

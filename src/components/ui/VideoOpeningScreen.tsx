@@ -56,13 +56,29 @@ export const VideoOpeningScreen: React.FC = () => {
     window.addEventListener('click', handleUserInteraction, { passive: true });
     window.addEventListener('touchstart', handleUserInteraction, { passive: true });
 
-    const handleScroll = () => {
-      const docHeight = Math.max(
+    let totalScrollable = Math.max(
+      1,
+      Math.max(
         document.body.scrollHeight,
         document.documentElement.scrollHeight,
         window.innerHeight * 2
+      ) - window.innerHeight
+    );
+    let scrollRaf: number | null = null;
+
+    const updateBounds = () => {
+      totalScrollable = Math.max(
+        1,
+        Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight,
+          window.innerHeight * 2
+        ) - window.innerHeight
       );
-      const totalScrollable = docHeight - window.innerHeight;
+    };
+
+    const applyScrollState = () => {
+      scrollRaf = null;
       const currentScroll = window.scrollY || window.pageYOffset || 0;
       const progress = totalScrollable > 0 ? currentScroll / totalScrollable : 0;
 
@@ -70,7 +86,6 @@ export const VideoOpeningScreen: React.FC = () => {
       if (el) {
         const opacity = Math.max(0, 1 - progress * 18);
         el.style.opacity = String(opacity);
-        el.style.pointerEvents = opacity > 0.05 ? 'auto' : 'none';
         el.style.visibility = opacity <= 0.01 ? 'hidden' : 'visible';
       }
 
@@ -84,8 +99,16 @@ export const VideoOpeningScreen: React.FC = () => {
       }
     };
 
+    const handleScroll = () => {
+      if (scrollRaf === null) {
+        scrollRaf = window.requestAnimationFrame(applyScrollState);
+      }
+    };
+
+    updateBounds();
+    window.addEventListener('resize', updateBounds, { passive: true });
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    applyScrollState();
 
     return () => {
       video.removeEventListener('canplay', tryPlay);
@@ -94,7 +117,11 @@ export const VideoOpeningScreen: React.FC = () => {
       video.removeEventListener('ended', handleEnded);
       window.removeEventListener('click', handleUserInteraction);
       window.removeEventListener('touchstart', handleUserInteraction);
+      window.removeEventListener('resize', updateBounds);
       window.removeEventListener('scroll', handleScroll);
+      if (scrollRaf !== null) {
+        window.cancelAnimationFrame(scrollRaf);
+      }
     };
   }, []);
 
@@ -108,7 +135,7 @@ export const VideoOpeningScreen: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-10 flex flex-col justify-between p-4 sm:p-6 md:p-10 select-none overflow-hidden bg-[#fbf4f6]"
+      className="fixed inset-0 z-10 flex flex-col justify-between p-4 sm:p-6 md:p-10 select-none overflow-hidden bg-[#fbf4f6] pointer-events-none"
       style={{
         opacity: 1,
         willChange: 'opacity',
