@@ -158,15 +158,26 @@ export const VideoScrubberCanvas: React.FC = () => {
       scheduleTick();
     };
 
-    // Preload frame_02 immediately and defer remaining frames by 1.2s so opening video gets 100% network priority
+    // Preload frame_02 first, then load remaining frames sequentially in the background
+    // so the opening video never experiences network or GPU contention while playing
     if (!preloadStarted) {
       preloadStarted = true;
-      const loadFrame = (i: number) => {
+      const loadFrameSequentially = (i: number) => {
+        if (i > 12) return;
         const idx = i - 2;
         const numStr = i.toString().padStart(2, '0');
         const img = new Image();
         img.decoding = 'async';
         img.src = `/frames/frame_${numStr}.webp`;
+
+        const triggerNext = () => {
+          if (i === 2) {
+            // Wait 3.2s before loading frames 03..12 so catwalk_opening.mp4 downloads with 100% bandwidth
+            window.setTimeout(() => loadFrameSequentially(3), 3200);
+          } else {
+            window.setTimeout(() => loadFrameSequentially(i + 1), 120);
+          }
+        };
 
         const finalizeImage = (loadedImg: HTMLImageElement) => {
           const dims = getFrameDimensions(loadedImg);
@@ -178,8 +189,11 @@ export const VideoScrubberCanvas: React.FC = () => {
                   width: bitmap.width,
                   height: bitmap.height,
                 };
-                needsRedraw = true;
-                scheduleTick();
+                if (idx === 0 || currentProgress > 0.02) {
+                  needsRedraw = true;
+                  scheduleTick();
+                }
+                triggerNext();
               })
               .catch(() => {
                 cachedFrames[idx] = {
@@ -187,8 +201,11 @@ export const VideoScrubberCanvas: React.FC = () => {
                   width: dims.width,
                   height: dims.height,
                 };
-                needsRedraw = true;
-                scheduleTick();
+                if (idx === 0 || currentProgress > 0.02) {
+                  needsRedraw = true;
+                  scheduleTick();
+                }
+                triggerNext();
               });
           } else {
             cachedFrames[idx] = {
@@ -196,8 +213,11 @@ export const VideoScrubberCanvas: React.FC = () => {
               width: dims.width,
               height: dims.height,
             };
-            needsRedraw = true;
-            scheduleTick();
+            if (idx === 0 || currentProgress > 0.02) {
+              needsRedraw = true;
+              scheduleTick();
+            }
+            triggerNext();
           }
         };
 
@@ -217,12 +237,7 @@ export const VideoScrubberCanvas: React.FC = () => {
         };
       };
 
-      loadFrame(2);
-      window.setTimeout(() => {
-        for (let i = 3; i <= 12; i++) {
-          loadFrame(i);
-        }
-      }, 1200);
+      loadFrameSequentially(2);
     }
 
     updateCanvasSize(true);

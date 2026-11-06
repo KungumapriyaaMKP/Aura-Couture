@@ -16,8 +16,10 @@ export const VideoOpeningScreen: React.FC = () => {
     video.muted = true;
     video.playsInline = true;
 
-    const startPlay = () => {
-      if (!hasFinishedRef.current && video.paused) {
+    const tryPlay = () => {
+      if (hasFinishedRef.current) return;
+      // Only start playback once enough frames are buffered (HAVE_FUTURE_DATA = 3 or HAVE_ENOUGH_DATA = 4)
+      if (video.paused && video.readyState >= 3) {
         video.muted = true;
         video.play().catch(() => {});
       }
@@ -28,20 +30,31 @@ export const VideoOpeningScreen: React.FC = () => {
       video.pause();
     };
 
-    video.addEventListener('loadedmetadata', startPlay);
-    video.addEventListener('loadeddata', startPlay);
-    video.addEventListener('canplay', startPlay);
-    video.addEventListener('canplaythrough', startPlay);
-    video.addEventListener('ended', handleEnded);
-    startPlay();
-
-    const handleFirstClick = () => {
-      if (!hasFinishedRef.current && video.paused && !video.ended) {
+    // If network briefly underruns, automatically resume as soon as buffer recovers
+    const handlePlayingAfterWait = () => {
+      if (!hasFinishedRef.current && video.paused) {
+        video.muted = true;
         video.play().catch(() => {});
       }
     };
-    window.addEventListener('click', handleFirstClick, { once: true });
-    window.addEventListener('touchstart', handleFirstClick, { once: true, passive: true });
+
+    video.addEventListener('canplay', tryPlay);
+    video.addEventListener('canplaythrough', tryPlay);
+    video.addEventListener('playing', handlePlayingAfterWait);
+    video.addEventListener('ended', handleEnded);
+
+    if (video.readyState >= 3) {
+      tryPlay();
+    }
+
+    const handleUserInteraction = () => {
+      if (!hasFinishedRef.current && video.paused && !video.ended) {
+        video.muted = true;
+        video.play().catch(() => {});
+      }
+    };
+    window.addEventListener('click', handleUserInteraction, { passive: true });
+    window.addEventListener('touchstart', handleUserInteraction, { passive: true });
 
     const handleScroll = () => {
       const docHeight = Math.max(
@@ -55,15 +68,19 @@ export const VideoOpeningScreen: React.FC = () => {
 
       const el = containerRef.current;
       if (el) {
-        // Visible at the start (progress 0), cleanly hidden once scrolled into Chapter 02 (progress >= 0.06)
         const opacity = Math.max(0, 1 - progress * 18);
         el.style.opacity = String(opacity);
         el.style.pointerEvents = opacity > 0.05 ? 'auto' : 'none';
         el.style.visibility = opacity <= 0.01 ? 'hidden' : 'visible';
       }
 
-      if (progress >= 0.06 && !video.paused) {
-        video.pause();
+      if (progress >= 0.06) {
+        if (!video.paused) {
+          video.pause();
+        }
+      } else if (!hasFinishedRef.current && video.paused && video.readyState >= 3) {
+        video.muted = true;
+        video.play().catch(() => {});
       }
     };
 
@@ -71,13 +88,12 @@ export const VideoOpeningScreen: React.FC = () => {
     handleScroll();
 
     return () => {
-      video.removeEventListener('loadedmetadata', startPlay);
-      video.removeEventListener('loadeddata', startPlay);
-      video.removeEventListener('canplay', startPlay);
-      video.removeEventListener('canplaythrough', startPlay);
+      video.removeEventListener('canplay', tryPlay);
+      video.removeEventListener('canplaythrough', tryPlay);
+      video.removeEventListener('playing', handlePlayingAfterWait);
       video.removeEventListener('ended', handleEnded);
-      window.removeEventListener('click', handleFirstClick);
-      window.removeEventListener('touchstart', handleFirstClick);
+      window.removeEventListener('click', handleUserInteraction);
+      window.removeEventListener('touchstart', handleUserInteraction);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -107,20 +123,13 @@ export const VideoOpeningScreen: React.FC = () => {
             el.playsInline = true;
           }
         }}
-        src="/catwalk_opening.mp4?v=3"
+        src="/catwalk_opening.mp4?v=4"
         poster="/frames/opening_poster.webp?v=3"
         muted
         playsInline
         autoPlay
         loop={false}
         preload="auto"
-        onCanPlay={(e) => {
-          const v = e.currentTarget;
-          if (!hasFinishedRef.current && v.paused) {
-            v.muted = true;
-            v.play().catch(() => {});
-          }
-        }}
         className="absolute inset-0 w-full h-full object-cover object-top z-0 video-native-hd"
       />
 
