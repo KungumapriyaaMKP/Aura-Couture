@@ -107,8 +107,8 @@ export const VideoOpeningScreen: React.FC = () => {
             el.playsInline = true;
           }
         }}
-        src="/catwalk_opening.mp4"
-        poster="/frames/opening_poster.webp"
+        src="/catwalk_opening.mp4?v=3"
+        poster="/frames/opening_poster.webp?v=3"
         muted
         playsInline
         autoPlay
