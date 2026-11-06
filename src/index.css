@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --rose-brand: #a02e46;
+    --rose-dark: #801c30;
+    --rose-soft: #d88a9a;
+    --bg-pink: #fbf4f6;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    height: auto !important;
+    background-color: #fbf4f6;
+    color: #a02e46;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-variant-numeric: lining-nums tabular-nums;
+    overflow-y: scroll !important;
+    overflow-x: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background-color: #fbf4f6;
+  }
+}
+
+/* Haute Couture Editorial Typography */
+.font-brand-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  font-variant-numeric: lining-nums;
+}
+
+.font-aura-display {
+  font-family: 'Cormorant Garamond', 'Italiana', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.font-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.font-couture-subtitle {
+  font-family: 'Italiana', 'Cormorant Garamond', serif;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+}
+
+.font-nav {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.font-body-editorial {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* Pure Native HD Video Display & GPU Hardware Acceleration */
+.video-native-hd, canvas {
+  object-fit: cover;
+  object-position: center top;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* High Fashion Soft Glassmorphism */
+.glass-panel {
+  background: rgba(255, 252, 254, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(216, 138, 154, 0.45);
+  box-shadow: 0 10px 30px rgba(160, 46, 70, 0.06);
+}
+
+.glass-panel-dark {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(216, 138, 154, 0.65);
+  box-shadow: 0 15px 40px rgba(160, 46, 70, 0.1);
+}
+
+/* Reference Rose Color Text */
+.pink-gradient-text, .pink-red-gradient-text, .rose-brand-text {
+  color: #a02e46;
+  font-weight: 500;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fbf4f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d88a9a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a02e46;
+}
+
+@keyframes coutureFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes coutureShimmer {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+
+@keyframes coutureGlowPulse {
+  0%, 100% {
+    box-shadow: 0 20px 60px rgba(160, 46, 70, 0.1), 0 0 0 1px rgba(216, 138, 154, 0.45);
+  }
+  50% {
+    box-shadow: 0 25px 75px rgba(160, 46, 70, 0.2), 0 0 25px rgba(216, 138, 154, 0.35);
+  }
+}
+
+.animate-couture-float {
+  animation: coutureFloat 4s ease-in-out infinite;
+}
+
+.animate-couture-shimmer {
+  animation: coutureShimmer 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-couture-glow {
+  animation: coutureGlowPulse 5s ease-in-out infinite;
+}

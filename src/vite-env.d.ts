@@ -1,0 +1,43 @@
+/// <reference types="vite/client" />
+
+declare module 'lucide-react' {
+  export const Sparkles: any;
+  export const ShoppingBag: any;
+  export const Volume2: any;
+  export const VolumeX: any;
+  export const Grid: any;
+  export const Heart: any;
+  export const ChevronDown: any;
+  export const X: any;
+  export const Check: any;
+  export const ShieldCheck: any;
+  export const Truck: any;
+  export const Trash2: any;
+  export const Plus: any;
+  export const Minus: any;
+  export const Gift: any;
+  export const ArrowRight: any;
+  export const CheckCircle: any;
+  export const CreditCard: any;
+  export const Play: any;
+  export const Pause: any;
+  export const Globe: any;
+  export const ExternalLink: any;
+  export const MapPin: any;
+  export const Calendar: any;
+  export const Clock: any;
+  export const Award: any;
+  export const Gem: any;
+  export const Crown: any;
+  export const Scissors: any;
+  export const SlidersHorizontal: any;
+  export const Search: any;
+  export const ArrowUpRight: any;
+  export const ChevronRight: any;
+  export const Star: any;
+  export const Phone: any;
+  export const Mail: any;
+  export const Compass: any;
+  export const Eye: any;
+  export const Layers: any;
+}
