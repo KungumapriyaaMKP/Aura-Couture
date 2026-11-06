@@ -12,10 +12,13 @@ export const VideoOpeningScreen: React.FC = () => {
     const video = videoRef.current;
     if (!video) return;
 
+    video.defaultMuted = true;
     video.muted = true;
+    video.playsInline = true;
 
     const startPlay = () => {
-      if (!hasFinishedRef.current) {
+      if (!hasFinishedRef.current && video.paused) {
+        video.muted = true;
         video.play().catch(() => {});
       }
     };
@@ -25,7 +28,10 @@ export const VideoOpeningScreen: React.FC = () => {
       video.pause();
     };
 
-    video.addEventListener('canplay', startPlay, { once: true });
+    video.addEventListener('loadedmetadata', startPlay);
+    video.addEventListener('loadeddata', startPlay);
+    video.addEventListener('canplay', startPlay);
+    video.addEventListener('canplaythrough', startPlay);
     video.addEventListener('ended', handleEnded);
     startPlay();
 
@@ -65,7 +71,10 @@ export const VideoOpeningScreen: React.FC = () => {
     handleScroll();
 
     return () => {
+      video.removeEventListener('loadedmetadata', startPlay);
+      video.removeEventListener('loadeddata', startPlay);
       video.removeEventListener('canplay', startPlay);
+      video.removeEventListener('canplaythrough', startPlay);
       video.removeEventListener('ended', handleEnded);
       window.removeEventListener('click', handleFirstClick);
       window.removeEventListener('touchstart', handleFirstClick);
@@ -90,13 +99,28 @@ export const VideoOpeningScreen: React.FC = () => {
       }}
     >
       <video
-        ref={videoRef}
+        ref={(el) => {
+          videoRef.current = el;
+          if (el) {
+            el.defaultMuted = true;
+            el.muted = true;
+            el.playsInline = true;
+          }
+        }}
         src="/catwalk_opening.mp4"
-        muted={true}
+        poster="/frames/opening_poster.webp"
+        muted
         playsInline
         autoPlay
         loop={false}
         preload="auto"
+        onCanPlay={(e) => {
+          const v = e.currentTarget;
+          if (!hasFinishedRef.current && v.paused) {
+            v.muted = true;
+            v.play().catch(() => {});
+          }
+        }}
         className="absolute inset-0 w-full h-full object-cover object-top z-0 video-native-hd"
       />
 

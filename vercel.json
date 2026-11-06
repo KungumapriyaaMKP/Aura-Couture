@@ -32,7 +32,7 @@
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!assets/|frames/|products/|catwalk_opening\\.mp4|favicon\\.svg|sumya_logo\\.png).*)",
       "destination": "/index.html"
     }
   ]
