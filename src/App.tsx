@@ -11,12 +11,29 @@ import { QuickCatalogView } from './components/ui/QuickCatalogView';
 import { ShopPage } from './components/pages/ShopPage';
 import { CollectionsPage } from './components/pages/CollectionsPage';
 import { AboutPage } from './components/pages/AboutPage';
+import { PRODUCTS } from './data/products';
 import { useCartStore } from './store/useCartStore';
 
 export const App: React.FC = () => {
   const setScrollProgress = useCartStore((s) => s.setScrollProgress);
   const setCurrentChapter = useCartStore((s) => s.setCurrentChapter);
   const activePage = useCartStore((s) => s.activePage);
+
+  // Pre-warm all lightweight WebP product images in browser cache so Shop, Collections, and About render instantaneously
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      const urls = new Set<string>(['/products/about_heritage_gown.webp']);
+      PRODUCTS.forEach((p) => {
+        urls.add(p.image);
+      });
+      urls.forEach((url) => {
+        const img = new Image();
+        img.decoding = 'async';
+        img.src = url;
+      });
+    }, 1500);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (activePage !== 'home') return;

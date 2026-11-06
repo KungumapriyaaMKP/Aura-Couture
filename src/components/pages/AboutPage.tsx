@@ -72,7 +72,7 @@ export const AboutPage: React.FC = () => {
 
             <div className="lg:col-span-5 relative min-h-[300px] sm:min-h-[380px] bg-[#3b121e] border-t lg:border-t-0 lg:border-l border-[#e8c3cd]">
               <img
-                src="/products/about_heritage_gown.jpg"
+                src="/products/about_heritage_gown.webp"
                 alt="Aura Couture Grand Salon"
                 className="w-full h-full object-cover"
               />
@@ -154,19 +154,19 @@ export const AboutPage: React.FC = () => {
               {
                 pillar: 'PILLAR I | ARCHITECTURE',
                 title: 'Sculpted Corsetry',
-                image: '/products/souveraine_bridal_gown.jpg',
+                image: '/products/souveraine_bridal_gown.webp',
                 text: 'Beneath the weightless cascade of silk tulle lies internal custom boning engineered to elevate posture and create a timeless regal silhouette without sacrificing comfort.',
               },
               {
                 pillar: 'PILLAR II | FINE EMBROIDERY',
                 title: 'Imperial Rose and Gold Needlework',
-                image: '/products/al_amira_cape_gown.jpg',
+                image: '/products/al_amira_cape_gown.webp',
                 text: 'Each floral motif, crystal cascade, and 24K gold thread pattern is applied by hand on wooden frames using techniques passed down through generations.',
               },
               {
                 pillar: 'PILLAR III | PRIVATE CONCIERGE',
                 title: 'Bespoke Private Concierge',
-                image: '/products/sultana_velvet_ensemble.jpg',
+                image: '/products/sultana_velvet_ensemble.webp',
                 text: 'From custom modest cape attachments to private trunk shows and residence fittings, our salon directors tailor every detail around your schedule and privacy.',
               },
             ].map((card, i) => (

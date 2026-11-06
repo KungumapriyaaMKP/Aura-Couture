@@ -66,9 +66,9 @@ export const PRODUCTS: Product[] = [
     ],
     position3D: [0, 1.85, -21],
     chapterIndex: 0,
-    image: "/products/celestial_orchid_gown.jpg",
+    image: "/products/celestial_orchid_gown.webp",
     secondaryImages: [
-      "/products/about_heritage_gown.jpg"
+      "/products/about_heritage_gown.webp"
     ],
     featured: true,
     artisanHours: 340,
@@ -98,9 +98,9 @@ export const PRODUCTS: Product[] = [
     ],
     position3D: [-4.2, 1.5, -14],
     chapterIndex: 3,
-    image: "/products/scarlet_velvet_siren.jpg",
+    image: "/products/scarlet_velvet_siren.webp",
     secondaryImages: [
-      "/products/crimson_silk_empress.jpg"
+      "/products/crimson_silk_empress.webp"
     ],
     featured: true,
     artisanHours: 210,
@@ -130,9 +130,9 @@ export const PRODUCTS: Product[] = [
     ],
     position3D: [2.5, 1.5, -19],
     chapterIndex: 7,
-    image: "/products/souveraine_bridal_gown.jpg",
+    image: "/products/souveraine_bridal_gown.webp",
     secondaryImages: [
-      "/products/blush_couture_gala.jpg"
+      "/products/blush_couture_gala.webp"
     ],
     featured: true,
     artisanHours: 460,
@@ -163,9 +163,9 @@ export const PRODUCTS: Product[] = [
     ],
     position3D: [0, 1.6, -16],
     chapterIndex: 5,
-    image: "/products/al_amira_cape_gown.jpg",
+    image: "/products/al_amira_cape_gown.webp",
     secondaryImages: [
-      "/products/sultana_velvet_ensemble.jpg"
+      "/products/sultana_velvet_ensemble.webp"
     ],
     featured: true,
     artisanHours: 380,
@@ -195,9 +195,9 @@ export const PRODUCTS: Product[] = [
     ],
     position3D: [4.2, 1.5, -14],
     chapterIndex: 3,
-    image: "/products/rose_gold_ballgown.jpg",
+    image: "/products/rose_gold_ballgown.webp",
     secondaryImages: [
-      "/products/blush_couture_gala.jpg"
+      "/products/blush_couture_gala.webp"
     ],
     featured: true,
     artisanHours: 260,
@@ -227,9 +227,9 @@ export const PRODUCTS: Product[] = [
     ],
     position3D: [-3.8, 1.3, -18],
     chapterIndex: 3,
-    image: "/products/crimson_silk_empress.jpg",
+    image: "/products/crimson_silk_empress.webp",
     secondaryImages: [
-      "/products/scarlet_velvet_siren.jpg"
+      "/products/scarlet_velvet_siren.webp"
     ],
     artisanHours: 175,
     edition: "Limited Salon Release"
@@ -258,9 +258,9 @@ export const PRODUCTS: Product[] = [
     ],
     position3D: [3.8, 1.3, -18],
     chapterIndex: 3,
-    image: "/products/blush_couture_gala.jpg",
+    image: "/products/blush_couture_gala.webp",
     secondaryImages: [
-      "/products/rose_gold_ballgown.jpg"
+      "/products/rose_gold_ballgown.webp"
     ],
     featured: true,
     artisanHours: 290,
@@ -290,9 +290,9 @@ export const PRODUCTS: Product[] = [
     ],
     position3D: [-2.5, 1.4, -17],
     chapterIndex: 8,
-    image: "/products/etoile_draped_column.jpg",
+    image: "/products/etoile_draped_column.webp",
     secondaryImages: [
-      "/products/scarlet_velvet_siren.jpg"
+      "/products/scarlet_velvet_siren.webp"
     ],
     artisanHours: 190,
     edition: "Grand Salon Edition"
@@ -321,9 +321,9 @@ export const PRODUCTS: Product[] = [
     ],
     position3D: [0, 1.5, -20],
     chapterIndex: 9,
-    image: "/products/sultana_velvet_ensemble.jpg",
+    image: "/products/sultana_velvet_ensemble.webp",
     secondaryImages: [
-      "/products/al_amira_cape_gown.jpg"
+      "/products/al_amira_cape_gown.webp"
     ],
     artisanHours: 310,
     edition: "Imperial Capsule"
@@ -338,8 +338,8 @@ export const COLLECTIONS_DATA: CoutureCollection[] = [
     frenchSubtitle: "THE GRAND RUNWAY GALLERY",
     description: "Our signature avant-garde runway narrative featuring sculptural 3D fan-pleated shoulder wings, blooming orchid silk corsetry, and iridescent metallic organza trains engineered to command every room.",
     inspiration: "Inspired by blooming twilight orchids and architectural origami silk drapery.",
-    heroImage: "/products/celestial_orchid_gown.jpg",
-    runwayFrames: ["/products/celestial_orchid_gown.jpg", "/products/about_heritage_gown.jpg", "/products/crimson_silk_empress.jpg", "/products/rose_gold_ballgown.jpg"],
+    heroImage: "/products/celestial_orchid_gown.webp",
+    runwayFrames: ["/products/celestial_orchid_gown.webp", "/products/about_heritage_gown.webp", "/products/crimson_silk_empress.webp", "/products/rose_gold_ballgown.webp"],
     pieceCount: 14,
     artisanHoursTotal: "4,200 Hours",
     keyMaterials: ["Iridescent Silk Organza", "3D Sculpted Silk Petals", "Crystal Vine Beadwork", "Liquid Rose-Gold Satin"],
@@ -352,8 +352,8 @@ export const COLLECTIONS_DATA: CoutureCollection[] = [
     frenchSubtitle: "MODEST AND IMPERIAL CAPE COUTURE",
     description: "Regal floor-sweeping capes, structured silk organza opera coats, and 24K gold embroidery celebrating grace, modesty, and sovereign presence.",
     inspiration: "Architectural arches, rose-water gardens, and private candlelit royal gatherings.",
-    heroImage: "/products/al_amira_cape_gown.jpg",
-    runwayFrames: ["/products/al_amira_cape_gown.jpg", "/products/sultana_velvet_ensemble.jpg", "/products/about_heritage_gown.jpg", "/products/celestial_orchid_gown.jpg"],
+    heroImage: "/products/al_amira_cape_gown.webp",
+    runwayFrames: ["/products/al_amira_cape_gown.webp", "/products/sultana_velvet_ensemble.webp", "/products/about_heritage_gown.webp", "/products/celestial_orchid_gown.webp"],
     pieceCount: 10,
     artisanHoursTotal: "3,600 Hours",
     keyMaterials: ["Pure Silk Satin", "24K Gold Bullion Embroidery", "Pure Silk Organza", "Ruby Crystal Accents"],
@@ -366,8 +366,8 @@ export const COLLECTIONS_DATA: CoutureCollection[] = [
     frenchSubtitle: "GRAND OPERA AND RED CARPET",
     description: "Fluid bias-cut silhouettes, rose-gold metallic silk chiffon, and architectural drapery that catches every chandelier reflection. Designed for red-carpet premieres, charity galas, and grand evening receptions.",
     inspiration: "The shimmering rose-gold reflection of palace chandeliers across evening silk.",
-    heroImage: "/products/scarlet_velvet_siren.jpg",
-    runwayFrames: ["/products/scarlet_velvet_siren.jpg", "/products/rose_gold_ballgown.jpg", "/products/etoile_draped_column.jpg", "/products/celestial_orchid_gown.jpg"],
+    heroImage: "/products/scarlet_velvet_siren.webp",
+    runwayFrames: ["/products/scarlet_velvet_siren.webp", "/products/rose_gold_ballgown.webp", "/products/etoile_draped_column.webp", "/products/celestial_orchid_gown.webp"],
     pieceCount: 12,
     artisanHoursTotal: "2,950 Hours",
     keyMaterials: ["Rose-Gold Silk Chiffon", "Double-Faced Silk Crepe", "Rhodium Crystal Drapery", "Mulberry Silk Lining"],
@@ -380,8 +380,8 @@ export const COLLECTIONS_DATA: CoutureCollection[] = [
     frenchSubtitle: "ROYAL BRIDAL AND WEDDING COUTURE",
     description: "Heirloom bridal and royal wedding creations crafted entirely to individual measurements. Each gown blooms with hand-cut silk organza peonies, fine floral lace, and thousands of freshwater seed pearls.",
     inspiration: "The timeless romance of blooming Damask roses at dawn in a private palace conservatory.",
-    heroImage: "/products/souveraine_bridal_gown.jpg",
-    runwayFrames: ["/products/souveraine_bridal_gown.jpg", "/products/blush_couture_gala.jpg", "/products/about_heritage_gown.jpg", "/products/rose_gold_ballgown.jpg"],
+    heroImage: "/products/souveraine_bridal_gown.webp",
+    runwayFrames: ["/products/souveraine_bridal_gown.webp", "/products/blush_couture_gala.webp", "/products/about_heritage_gown.webp", "/products/rose_gold_ballgown.webp"],
     pieceCount: 8,
     artisanHoursTotal: "5,100 Hours",
     keyMaterials: ["Fine Floral Lace", "3D Silk Organza Peonies", "Freshwater Seed Pearls", "Illusion Silk Tulle"],
