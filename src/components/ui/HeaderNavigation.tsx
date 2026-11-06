@@ -36,21 +36,21 @@ export const HeaderNavigation: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-40 px-6 md:px-10 py-4 md:py-5 flex items-center justify-between pointer-events-auto select-none transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-40 px-3 sm:px-6 md:px-10 py-2.5 sm:py-4 md:py-5 flex items-center justify-between gap-2 pointer-events-auto select-none transition-all duration-300 ${
         activePage !== 'home'
-          ? 'bg-[#fbf4f6]/92 backdrop-blur-md border-b border-[#e8c3cd]/80 shadow-[0_4px_25px_rgba(160,46,70,0.06)]'
-          : ''
+          ? 'bg-[#fbf4f6]/95 backdrop-blur-md border-b border-[#e8c3cd]/80 shadow-[0_4px_25px_rgba(160,46,70,0.06)]'
+          : 'bg-gradient-to-b from-[#fbf4f6]/85 via-[#fbf4f6]/40 to-transparent sm:bg-none'
       }`}
     >
       {/* Top Left Navigation Links */}
-      <nav className="flex items-center gap-6 sm:gap-8 md:gap-10 font-nav text-xs md:text-sm font-bold tracking-[0.28em] text-[#a02e46]">
+      <nav className="flex items-center gap-2.5 sm:gap-6 md:gap-10 font-nav text-[9.5px] sm:text-xs md:text-sm font-bold tracking-[0.06em] sm:tracking-[0.22em] md:tracking-[0.28em] text-[#a02e46] min-w-0">
         {navItems.map((item) => {
           const isActive = activePage === item.id;
           return (
             <button
               key={item.id}
               onClick={() => navigateTo(item.id)}
-              className={`group relative py-1 transition-all cursor-pointer uppercase tracking-[0.28em] ${
+              className={`group relative py-1 transition-all cursor-pointer uppercase tracking-[0.06em] sm:tracking-[0.22em] md:tracking-[0.28em] whitespace-nowrap ${
                 isActive
                   ? 'text-[#801c30]'
                   : 'text-[#a02e46] hover:text-[#801c30]'
@@ -85,16 +85,16 @@ export const HeaderNavigation: React.FC = () => {
       </div>
 
       {/* Top Right Editorial Controls */}
-      <div className="flex items-center gap-2.5 md:gap-3">
+      <div className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 shrink-0">
         <button
           onClick={() => {
             audioEngine.playChimeSound();
             toggleCatalog();
           }}
-          className="flex items-center glass-panel p-2.5 md:p-3 rounded-none text-[#8a2b53] border border-[#e8c3cd]/60 hover:border-[#c4607e] bg-white/85 shadow-sm cursor-pointer transition-all"
+          className="flex items-center justify-center glass-panel p-1.5 sm:p-2.5 md:p-3 rounded-none text-[#8a2b53] border border-[#e8c3cd]/60 hover:border-[#c4607e] bg-white/85 shadow-sm cursor-pointer transition-all"
           title="Catalogue Grid"
         >
-          <Grid className="w-4 h-4 md:w-5 md:h-5" />
+          <Grid className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
         </button>
 
         <button
@@ -102,12 +102,12 @@ export const HeaderNavigation: React.FC = () => {
             audioEngine.playChimeSound();
             toggleWishlistDrawer();
           }}
-          className="flex items-center glass-panel p-2.5 md:p-3 rounded-none text-[#8a2b53] border border-[#e8c3cd]/60 hover:border-[#c4607e] bg-white/85 shadow-sm cursor-pointer transition-all"
+          className="flex items-center justify-center glass-panel p-1.5 sm:p-2.5 md:p-3 rounded-none text-[#8a2b53] border border-[#e8c3cd]/60 hover:border-[#c4607e] bg-white/85 shadow-sm cursor-pointer transition-all"
           title="Wishlist"
         >
-          <Heart className={`w-4 h-4 md:w-5 md:h-5 ${wishlist.length > 0 ? 'fill-[#a02e46] text-[#a02e46]' : ''}`} />
+          <Heart className={`w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 ${wishlist.length > 0 ? 'fill-[#a02e46] text-[#a02e46]' : ''}`} />
           {wishlist.length > 0 && (
-            <span className="ml-1 text-xs text-[#4a121e] font-black">{wishlist.length}</span>
+            <span className="ml-1 text-[10px] sm:text-xs text-[#4a121e] font-black">{wishlist.length}</span>
           )}
         </button>
 
@@ -116,12 +116,12 @@ export const HeaderNavigation: React.FC = () => {
             audioEngine.playChimeSound();
             toggleCart();
           }}
-          className="flex items-center glass-panel p-2.5 md:p-3 rounded-none text-[#8a2b53] border border-[#e8c3cd]/60 hover:border-[#c4607e] bg-white/85 shadow-sm cursor-pointer transition-all"
+          className="flex items-center justify-center glass-panel p-1.5 sm:p-2.5 md:p-3 rounded-none text-[#8a2b53] border border-[#e8c3cd]/60 hover:border-[#c4607e] bg-white/85 shadow-sm cursor-pointer transition-all"
           title="Shopping Bag"
         >
-          <ShoppingBag className="w-4 h-4 md:w-5 md:h-5" />
+          <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
           {totalItems > 0 && (
-            <span className="ml-1 text-xs text-[#4a121e] font-black">
+            <span className="ml-1 text-[10px] sm:text-xs text-[#4a121e] font-black">
               {totalItems}
             </span>
           )}

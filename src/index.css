@@ -36,44 +36,46 @@
 }
 
 /* Haute Couture Editorial Typography */
-.font-brand-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  font-variant-numeric: lining-nums;
-}
+@layer components {
+  .font-brand-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    font-variant-numeric: lining-nums;
+  }
 
-.font-aura-display {
-  font-family: 'Cormorant Garamond', 'Italiana', Georgia, serif;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  font-variant-numeric: lining-nums tabular-nums;
-}
+  .font-aura-display {
+    font-family: 'Cormorant Garamond', 'Italiana', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
 
-.font-serif {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  font-variant-numeric: lining-nums tabular-nums;
-}
+  .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
 
-.font-couture-subtitle {
-  font-family: 'Italiana', 'Cormorant Garamond', serif;
-  font-weight: 400;
-  letter-spacing: 0.32em;
-}
+  .font-couture-subtitle {
+    font-family: 'Italiana', 'Cormorant Garamond', serif;
+    font-weight: 400;
+    letter-spacing: 0.32em;
+  }
 
-.font-nav {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.26em;
-  font-variant-numeric: lining-nums tabular-nums;
-}
+  .font-nav {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
 
-.font-body-editorial {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.02em;
+  .font-body-editorial {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
 }
 
 /* Pure Native HD Video Display & GPU Hardware Acceleration */

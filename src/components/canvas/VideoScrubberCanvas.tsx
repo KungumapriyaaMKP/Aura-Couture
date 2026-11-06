@@ -44,10 +44,21 @@ export const VideoScrubberCanvas: React.FC = () => {
     let rafId: number | null = null;
     let needsRedraw = true;
 
-    const updateCanvasSize = () => {
+    const updateCanvasSize = (force = false) => {
+      const nextW = window.innerWidth;
+      const nextH = window.innerHeight;
+      // Avoid canvas clear/flicker on mobile when only the browser URL bar hides/shows
+      if (
+        !force &&
+        nextW === viewW &&
+        nextW < 768 &&
+        Math.abs(nextH - viewH) < 140
+      ) {
+        return;
+      }
       dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      viewW = window.innerWidth;
-      viewH = window.innerHeight;
+      viewW = nextW;
+      viewH = nextH;
       const targetW = Math.floor(viewW * dpr);
       const targetH = Math.floor(viewH * dpr);
       if (canvas.width !== targetW || canvas.height !== targetH) {
@@ -61,7 +72,7 @@ export const VideoScrubberCanvas: React.FC = () => {
       const docHeight = Math.max(
         document.body.scrollHeight,
         document.documentElement.scrollHeight,
-        12000
+        window.innerHeight * 2
       );
       const totalScrollable = docHeight - window.innerHeight;
       const currentScroll = window.scrollY || window.pageYOffset || 0;
@@ -142,7 +153,7 @@ export const VideoScrubberCanvas: React.FC = () => {
     };
 
     const handleResize = () => {
-      updateCanvasSize();
+      updateCanvasSize(false);
       targetProgress = getScrollProgress();
       scheduleTick();
     };
@@ -207,7 +218,7 @@ export const VideoScrubberCanvas: React.FC = () => {
       }
     }
 
-    updateCanvasSize();
+    updateCanvasSize(true);
     targetProgress = getScrollProgress();
     currentProgress = targetProgress;
     scheduleTick();

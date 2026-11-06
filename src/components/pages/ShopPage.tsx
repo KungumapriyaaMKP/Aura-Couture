@@ -72,26 +72,26 @@ export const ShopPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#fbf4f6] text-[#4a121e] pt-24 pb-24 px-4 sm:px-8 md:px-14 relative z-20 select-none">
+    <div className="min-h-screen w-full bg-[#fbf4f6] text-[#4a121e] pt-18 sm:pt-24 pb-16 sm:pb-24 px-3.5 sm:px-8 md:px-14 relative z-20 select-none">
       <div className="fixed inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_right,rgba(216,138,154,0.16),transparent_55%),radial-gradient(circle_at_bottom_left,rgba(160,46,70,0.08),transparent_50%)] z-0" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Neat Architectural Filter and Sort Toolbar */}
-        <div className="glass-panel border border-[#e8c3cd] bg-white px-5 py-4 mb-8 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-2.5 w-full justify-between">
-            <div className="flex flex-wrap items-center gap-2.5">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search gown..."
-                className="w-full sm:w-44 px-3.5 py-2 bg-[#fbf4f6] border border-[#e8c3cd] focus:border-[#a02e46] focus:bg-white focus:outline-none text-xs text-[#4a121e] placeholder-[#a02e46]/50 font-medium"
-              />
+        <div className="glass-panel border border-[#e8c3cd] bg-white px-4 sm:px-5 py-3.5 sm:py-4 mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 w-full">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search gown..."
+              className="w-full sm:w-48 px-3.5 py-2 bg-[#fbf4f6] border border-[#e8c3cd] focus:border-[#a02e46] focus:bg-white focus:outline-none text-xs text-[#4a121e] placeholder-[#a02e46]/50 font-medium"
+            />
 
+            <div className="grid grid-cols-1 xs:grid-cols-3 sm:flex sm:flex-wrap items-center gap-2.5 flex-1">
               <select
                 value={fabricFilter}
                 onChange={(e) => setFabricFilter(e.target.value)}
-                className="px-3.5 py-2 bg-[#fbf4f6] border border-[#e8c3cd] focus:border-[#a02e46] text-[10px] font-nav tracking-[0.18em] text-[#4a121e] uppercase focus:outline-none cursor-pointer"
+                className="w-full sm:w-auto px-3 py-2 bg-[#fbf4f6] border border-[#e8c3cd] focus:border-[#a02e46] text-[10px] font-nav tracking-[0.16em] sm:tracking-[0.18em] text-[#4a121e] uppercase focus:outline-none cursor-pointer"
               >
                 <option value="all">Fabric: All</option>
                 <option value="silk tulle">Silk Tulle</option>
@@ -104,7 +104,7 @@ export const ShopPage: React.FC = () => {
               <select
                 value={priceFilter}
                 onChange={(e) => setPriceFilter(e.target.value as any)}
-                className="px-3.5 py-2 bg-[#fbf4f6] border border-[#e8c3cd] focus:border-[#a02e46] text-[10px] font-nav tracking-[0.18em] text-[#4a121e] uppercase focus:outline-none cursor-pointer"
+                className="w-full sm:w-auto px-3 py-2 bg-[#fbf4f6] border border-[#e8c3cd] focus:border-[#a02e46] text-[10px] font-nav tracking-[0.16em] sm:tracking-[0.18em] text-[#4a121e] uppercase focus:outline-none cursor-pointer"
               >
                 <option value="all">Price: All</option>
                 <option value="under-150k">Under INR 1,50,000</option>
@@ -115,7 +115,7 @@ export const ShopPage: React.FC = () => {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="px-3.5 py-2 bg-[#fbf4f6] border border-[#e8c3cd] focus:border-[#a02e46] text-[10px] font-nav tracking-[0.18em] text-[#4a121e] uppercase focus:outline-none cursor-pointer"
+                className="w-full sm:w-auto px-3 py-2 bg-[#fbf4f6] border border-[#e8c3cd] focus:border-[#a02e46] text-[10px] font-nav tracking-[0.16em] sm:tracking-[0.18em] text-[#4a121e] uppercase focus:outline-none cursor-pointer"
               >
                 <option value="featured">Sort: Featured</option>
                 <option value="price-asc">Price: Low to High</option>
@@ -126,7 +126,7 @@ export const ShopPage: React.FC = () => {
               {hasActiveFilters && (
                 <button
                   onClick={resetFilters}
-                  className="px-3 py-2 border border-[#a02e46] text-[#a02e46] hover:bg-[#a02e46] hover:text-white font-nav text-[9px] tracking-[0.2em] uppercase transition-colors cursor-pointer"
+                  className="w-full sm:w-auto px-3 py-2 border border-[#a02e46] text-[#a02e46] hover:bg-[#a02e46] hover:text-white font-nav text-[9px] tracking-[0.2em] uppercase transition-colors cursor-pointer"
                 >
                   RESET
                 </button>
@@ -137,8 +137,8 @@ export const ShopPage: React.FC = () => {
 
         {/* Product Grid */}
         {filteredProducts.length === 0 ? (
-          <div className="glass-panel border border-[#e8c3cd] bg-white p-16 text-center">
-            <p className="font-aura-display text-2xl text-[#3b121e] mb-2">
+          <div className="glass-panel border border-[#e8c3cd] bg-white p-10 sm:p-16 text-center">
+            <p className="font-aura-display text-xl sm:text-2xl text-[#3b121e] mb-2">
               No Couture Pieces Match Your Selection
             </p>
             <p className="text-xs text-[#801c30] mb-6">
@@ -152,7 +152,7 @@ export const ShopPage: React.FC = () => {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredProducts.map((product) => {
               const isWishlisted = wishlist.includes(product.id);
 
@@ -178,12 +178,12 @@ export const ShopPage: React.FC = () => {
 
                       <div className="absolute top-3 left-3 flex flex-col gap-1.5">
                         {product.edition && (
-                          <span className="px-2.5 py-1 bg-white/95 backdrop-blur-md border border-[#d88a9a] font-nav text-[9px] tracking-[0.22em] text-[#a02e46] uppercase shadow-sm">
+                          <span className="px-2 sm:px-2.5 py-1 bg-white/95 backdrop-blur-md border border-[#d88a9a] font-nav text-[8px] sm:text-[9px] tracking-[0.18em] sm:tracking-[0.22em] text-[#a02e46] uppercase shadow-sm">
                             {product.edition}
                           </span>
                         )}
                         {product.artisanHours && (
-                          <span className="px-2.5 py-1 bg-[#3b121e]/85 text-[#fce4ec] font-nav text-[8px] tracking-[0.2em] uppercase w-fit">
+                          <span className="px-2 sm:px-2.5 py-1 bg-[#3b121e]/85 text-[#fce4ec] font-nav text-[8px] tracking-[0.18em] sm:tracking-[0.2em] uppercase w-fit">
                             {product.artisanHours} HRS HANDWORK
                           </span>
                         )}
@@ -206,12 +206,12 @@ export const ShopPage: React.FC = () => {
                       </button>
                     </div>
 
-                    <div className="p-6">
+                    <div className="p-4 sm:p-6">
                       <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className="font-nav text-[9px] tracking-[0.28em] text-[#a02e46]/85 uppercase">
+                        <span className="font-nav text-[9px] tracking-[0.24em] sm:tracking-[0.28em] text-[#a02e46]/85 uppercase">
                           {product.category}
                         </span>
-                        <div className="flex items-center gap-1.5">
+                        <div className="flex items-center gap-1.5 shrink-0">
                           {product.colors.map((col, i) => (
                             <span
                               key={i}
@@ -223,7 +223,7 @@ export const ShopPage: React.FC = () => {
                         </div>
                       </div>
 
-                      <h3 className="font-aura-display text-[22px] font-medium tracking-[0.03em] text-[#3b121e] group-hover:text-[#a02e46] transition-colors mb-2 leading-snug">
+                      <h3 className="font-aura-display text-xl sm:text-[22px] font-medium tracking-[0.03em] text-[#3b121e] group-hover:text-[#a02e46] transition-colors mb-2 leading-snug">
                         {product.name}
                       </h3>
 
@@ -237,19 +237,19 @@ export const ShopPage: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="px-6 pb-6 pt-4 border-t border-[#e8c3cd]/50 flex items-center justify-between gap-4 bg-[#fffafc]">
+                  <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-3.5 sm:pt-4 border-t border-[#e8c3cd]/50 flex items-center justify-between gap-3 sm:gap-4 bg-[#fffafc]">
                     <div>
-                      <div className="font-aura-display text-[22px] font-medium tracking-[0.06em] text-[#a02e46] leading-tight">
+                      <div className="font-aura-display text-lg sm:text-[22px] font-medium tracking-[0.06em] text-[#a02e46] leading-tight">
                         {formatCouturePrice(product.price)}
                       </div>
-                      <div className="text-[9px] font-nav tracking-[0.24em] uppercase text-[#8a2b53]/70 mt-0.5">
+                      <div className="text-[8px] sm:text-[9px] font-nav tracking-[0.2em] sm:tracking-[0.24em] uppercase text-[#8a2b53]/70 mt-0.5">
                         BESPOKE TAILORED FIT
                       </div>
                     </div>
 
                     <button
                       onClick={(e) => handleQuickAdd(e, product)}
-                      className="px-5 py-2.5 bg-[#a02e46] hover:bg-[#801c30] text-white font-nav text-[9px] tracking-[0.26em] uppercase transition-all cursor-pointer"
+                      className="px-4 sm:px-5 py-2.5 bg-[#a02e46] hover:bg-[#801c30] text-white font-nav text-[9px] tracking-[0.22em] sm:tracking-[0.26em] uppercase transition-all cursor-pointer shrink-0"
                     >
                       {quickAddedId === product.id ? 'IN BAG' : 'ACQUIRE'}
                     </button>
@@ -261,7 +261,7 @@ export const ShopPage: React.FC = () => {
         )}
 
         {/* White-Glove Concierge Banner */}
-        <div className="mt-16 glass-panel border border-[#d88a9a] bg-white p-8 md:p-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="mt-10 sm:mt-16 glass-panel border border-[#d88a9a] bg-white p-5 sm:p-8 md:p-10 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           <div className="border-l-2 border-[#a02e46] pl-5">
             <span className="font-nav text-[9px] tracking-[0.26em] text-[#a02e46] uppercase block mb-1">
               SERVICE I

@@ -21,6 +21,7 @@ node_modules/
 dist/
 dist-ssr/
 *.local
+*.tsbuildinfo
 
 # Editor directories and files
 .vscode/*
@@ -35,3 +36,4 @@ dist-ssr/
 
 # Working media source files
 Untitled design*.mp4
+Aura-Couture/

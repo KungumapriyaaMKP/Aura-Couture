@@ -33,7 +33,7 @@ export const App: React.FC = () => {
           const docHeight = Math.max(
             document.body.scrollHeight,
             document.documentElement.scrollHeight,
-            12000
+            window.innerHeight * 2
           );
           const totalScrollable = docHeight - window.innerHeight;
           const currentScroll = window.scrollY || window.pageYOffset || 0;
@@ -79,8 +79,7 @@ export const App: React.FC = () => {
           <BoutiqueCanvas />
           <ChapterIndicators />
           <div
-            className="relative z-0 w-full pointer-events-auto"
-            style={{ minHeight: '12000px', height: '1200vh' }}
+            className="relative z-0 w-full pointer-events-auto h-[800vh] md:h-[1200vh] min-h-[5600px] md:min-h-[12000px]"
           />
         </>
       )}

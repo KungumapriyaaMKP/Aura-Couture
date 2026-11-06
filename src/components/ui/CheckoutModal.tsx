@@ -41,8 +41,8 @@ export const CheckoutModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#3b121e]/35 backdrop-blur-md animate-fade-in pointer-events-auto">
-      <div className="relative w-full max-w-xl glass-panel-dark rounded-none border-2 border-[#e8c3cd] shadow-2xl overflow-hidden bg-[#fffafc]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-[#3b121e]/35 backdrop-blur-md animate-fade-in pointer-events-auto">
+      <div className="relative w-full max-w-xl max-h-[92vh] overflow-y-auto glass-panel-dark rounded-none border-2 border-[#e8c3cd] shadow-2xl bg-[#fffafc]">
         <button
           onClick={handleClose}
           className={`absolute top-4 right-4 z-20 px-3 py-1.5 border font-nav text-[9px] tracking-[0.22em] uppercase transition-colors cursor-pointer ${
@@ -55,11 +55,11 @@ export const CheckoutModal: React.FC = () => {
         </button>
 
         {step === 'form' ? (
-          <div className="p-6 md:p-8">
+          <div className="p-5 sm:p-6 md:p-8">
             <span className="font-nav text-[10px] uppercase tracking-[0.28em] text-[#8a2b53] block mb-1">
               CHECKOUT
             </span>
-            <h2 className="font-aura-display text-2xl font-medium text-[#3b121e] mb-5">
+            <h2 className="font-aura-display text-xl sm:text-2xl font-medium text-[#3b121e] mb-4 sm:mb-5 pr-16">
               Complete Your Couture Order
             </h2>
 
@@ -176,40 +176,40 @@ export const CheckoutModal: React.FC = () => {
             </div>
 
             {/* Order Progress & Official Receipt */}
-            <div className="p-6 md:p-8 space-y-6 bg-[#fffafc]">
+            <div className="p-4 sm:p-6 md:p-8 space-y-5 sm:space-y-6 bg-[#fffafc]">
               {/* 3-Step Live Status Bar */}
-              <div className="grid grid-cols-3 gap-2 text-center">
-                <div className="p-3 bg-emerald-50 border border-emerald-200">
+              <div className="grid grid-cols-3 gap-1.5 sm:gap-2 text-center">
+                <div className="p-2 sm:p-3 bg-emerald-50 border border-emerald-200">
                   <div className="w-6 h-6 mx-auto mb-1 rounded-full bg-emerald-600 text-white flex items-center justify-center">
                     <Check className="w-3.5 h-3.5 stroke-[3]" />
                   </div>
-                  <span className="font-nav text-[8px] uppercase tracking-[0.18em] text-emerald-800 font-bold block">
+                  <span className="font-nav text-[7px] sm:text-[8px] uppercase tracking-[0.12em] sm:tracking-[0.18em] text-emerald-800 font-bold block">
                     Confirmed
                   </span>
                 </div>
 
-                <div className="p-3 bg-[#fbf4f6] border border-[#e8c3cd]">
+                <div className="p-2 sm:p-3 bg-[#fbf4f6] border border-[#e8c3cd]">
                   <div className="w-6 h-6 mx-auto mb-1 rounded-full bg-[#a02e46] text-white flex items-center justify-center">
                     <ShieldCheck className="w-3.5 h-3.5" />
                   </div>
-                  <span className="font-nav text-[8px] uppercase tracking-[0.18em] text-[#4a121e] font-bold block">
-                    Steaming & Trunk
+                  <span className="font-nav text-[7px] sm:text-[8px] uppercase tracking-[0.12em] sm:tracking-[0.18em] text-[#4a121e] font-bold block">
+                    Steaming &amp; Trunk
                   </span>
                 </div>
 
-                <div className="p-3 bg-[#fbf4f6] border border-[#e8c3cd]">
+                <div className="p-2 sm:p-3 bg-[#fbf4f6] border border-[#e8c3cd]">
                   <div className="w-6 h-6 mx-auto mb-1 rounded-full bg-[#fce4ec] text-[#a02e46] flex items-center justify-center">
                     <Truck className="w-3.5 h-3.5" />
                   </div>
-                  <span className="font-nav text-[8px] uppercase tracking-[0.18em] text-[#8a2b53] font-bold block">
+                  <span className="font-nav text-[7px] sm:text-[8px] uppercase tracking-[0.12em] sm:tracking-[0.18em] text-[#8a2b53] font-bold block">
                     White-Glove Dispatch
                   </span>
                 </div>
               </div>
 
               {/* Official Receipt Card */}
-              <div className="bg-white border border-[#e8c3cd] p-5 space-y-3 shadow-sm">
-                <div className="flex items-center justify-between pb-3 border-b border-[#e8c3cd]/60">
+              <div className="bg-white border border-[#e8c3cd] p-4 sm:p-5 space-y-3 shadow-sm">
+                <div className="flex items-center justify-between pb-3 border-b border-[#e8c3cd]/60 gap-2">
                   <div>
                     <span className="font-nav text-[8px] uppercase tracking-[0.22em] text-[#8a2b53] block">
                       Order Reference
@@ -218,15 +218,15 @@ export const CheckoutModal: React.FC = () => {
                       {orderRef}
                     </span>
                   </div>
-                  <span className="px-2.5 py-1 bg-emerald-50 border border-emerald-300 text-emerald-700 font-nav text-[8px] uppercase tracking-[0.2em] font-bold">
-                    PAID & VERIFIED
+                  <span className="px-2 sm:px-2.5 py-1 bg-emerald-50 border border-emerald-300 text-emerald-700 font-nav text-[8px] uppercase tracking-[0.16em] sm:tracking-[0.2em] font-bold whitespace-nowrap">
+                    PAID &amp; VERIFIED
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 text-xs pt-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs pt-1">
                   <div>
                     <span className="font-nav text-[8px] uppercase tracking-[0.2em] text-[#8a2b53] block mb-0.5">
-                      Recipient & Destination
+                      Recipient &amp; Destination
                     </span>
                     <p className="font-semibold text-[#3b121e]">
                       {formData.fullName || 'Valued Client'}
@@ -238,7 +238,7 @@ export const CheckoutModal: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="text-right">
+                  <div className="sm:text-right pt-2 sm:pt-0 border-t sm:border-t-0 border-[#e8c3cd]/40">
                     <span className="font-nav text-[8px] uppercase tracking-[0.2em] text-[#8a2b53] block mb-0.5">
                       Amount Paid ({confirmedCount} {confirmedCount === 1 ? 'Piece' : 'Pieces'})
                     </span>

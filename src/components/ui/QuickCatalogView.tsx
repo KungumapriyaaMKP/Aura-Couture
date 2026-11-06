@@ -9,14 +9,14 @@ export const QuickCatalogView: React.FC = () => {
   if (!isCatalogOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-[#3b121e]/25 backdrop-blur-md animate-fade-in pointer-events-auto">
-      <div className="relative w-full max-w-6xl h-[86vh] glass-panel-dark rounded-none p-6 md:p-8 border-2 border-[#e8c3cd] shadow-2xl flex flex-col justify-between overflow-hidden bg-[#fffafc]">
-        <div className="flex items-center justify-between pb-4 border-b border-[#e8c3cd]/60 shrink-0">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#3b121e]/25 backdrop-blur-md animate-fade-in pointer-events-auto">
+      <div className="relative w-full max-w-6xl h-[90vh] sm:h-[86vh] glass-panel-dark rounded-none p-4 sm:p-6 md:p-8 border-2 border-[#e8c3cd] shadow-2xl flex flex-col justify-between overflow-hidden bg-[#fffafc]">
+        <div className="flex items-center justify-between pb-3.5 sm:pb-4 border-b border-[#e8c3cd]/60 shrink-0 gap-3">
           <div>
-            <span className="font-nav text-[9px] tracking-[0.28em] text-[#a02e46] uppercase block mb-1">
+            <span className="font-nav text-[8px] sm:text-[9px] tracking-[0.24em] sm:tracking-[0.28em] text-[#a02e46] uppercase block mb-0.5 sm:mb-1">
               COLLECTION ARCHIVE
             </span>
-            <h2 className="font-aura-display text-2xl md:text-3xl font-medium text-[#3b121e] tracking-[0.08em] uppercase">
+            <h2 className="font-aura-display text-xl sm:text-2xl md:text-3xl font-medium text-[#3b121e] tracking-[0.06em] sm:tracking-[0.08em] uppercase">
               RUNWAY CATALOGUE
             </h2>
           </div>
@@ -25,13 +25,13 @@ export const QuickCatalogView: React.FC = () => {
               audioEngine.playHotspotClickSound();
               toggleCatalog();
             }}
-            className="px-4 py-2 border border-[#e8c3cd] font-nav text-[10px] tracking-[0.24em] uppercase text-[#3b121e] hover:bg-[#fce4ec] transition-colors cursor-pointer"
+            className="px-3 sm:px-4 py-1.5 sm:py-2 border border-[#e8c3cd] font-nav text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.24em] uppercase text-[#3b121e] hover:bg-[#fce4ec] transition-colors cursor-pointer shrink-0"
           >
             CLOSE
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto py-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pr-1">
+        <div className="flex-1 overflow-y-auto py-4 sm:py-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 pr-1">
           {PRODUCTS.map((prod) => (
             <div
               key={prod.id}

@@ -32,13 +32,13 @@ export const WishlistDrawer: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-[#3b121e]/25 backdrop-blur-sm animate-fade-in pointer-events-auto select-none">
-      <div className="w-full max-w-md h-full glass-panel-dark border-l-2 border-[#e8c3cd] flex flex-col justify-between p-6 shadow-2xl overflow-hidden bg-[#fffafc]">
+      <div className="w-full max-w-md h-full glass-panel-dark border-l-2 border-[#e8c3cd] flex flex-col justify-between p-4 sm:p-6 shadow-2xl overflow-hidden bg-[#fffafc]">
         <div className="flex items-center justify-between pb-4 border-b border-[#e8c3cd]/60">
           <div>
             <span className="font-nav text-[9px] tracking-[0.26em] text-[#a02e46] uppercase block mb-0.5">
               PRIVATE SELECTION
             </span>
-            <h3 className="font-aura-display text-xl font-medium text-[#3b121e] tracking-[0.08em] uppercase">
+            <h3 className="font-aura-display text-lg sm:text-xl font-medium text-[#3b121e] tracking-[0.08em] uppercase">
               WISHLIST ({wishlistedProducts.length})
             </h3>
           </div>
@@ -53,7 +53,7 @@ export const WishlistDrawer: React.FC = () => {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto py-4 space-y-4">
+        <div className="flex-1 overflow-y-auto py-4 space-y-3.5 sm:space-y-4">
           {wishlistedProducts.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center p-6">
               <p className="font-aura-display text-xl text-[#3b121e] font-medium mb-2">
@@ -77,7 +77,7 @@ export const WishlistDrawer: React.FC = () => {
             wishlistedProducts.map((product) => (
               <div
                 key={product.id}
-                className="glass-panel p-4 rounded-none flex gap-4 border border-[#e8c3cd] items-center bg-white"
+                className="glass-panel p-3 sm:p-4 rounded-none flex gap-3 sm:gap-4 border border-[#e8c3cd] items-center bg-white"
               >
                 <img
                   src={product.image}

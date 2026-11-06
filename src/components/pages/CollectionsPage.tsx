@@ -25,12 +25,12 @@ export const CollectionsPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#fbf4f6] text-[#4a121e] pt-24 pb-24 px-4 sm:px-8 md:px-14 relative z-20 select-none">
+    <div className="min-h-screen w-full bg-[#fbf4f6] text-[#4a121e] pt-18 sm:pt-24 pb-16 sm:pb-24 px-3.5 sm:px-8 md:px-14 relative z-20 select-none">
       <div className="fixed inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_left,rgba(216,138,154,0.18),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(160,46,70,0.1),transparent_50%)] z-0" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Lookbook Chapters */}
-        <div className="space-y-16">
+        <div className="space-y-10 sm:space-y-16">
           {COLLECTIONS_DATA.map((collection, index) => {
             const activeHero =
               selectedFrameByCollection[collection.id] || collection.heroImage;
@@ -45,28 +45,28 @@ export const CollectionsPage: React.FC = () => {
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12">
                   {/* Left Visual Gallery */}
-                  <div className="lg:col-span-7 bg-[#fbf4f6] border-b lg:border-b-0 lg:border-r border-[#e8c3cd] p-6 md:p-8 flex flex-col justify-between">
+                  <div className="lg:col-span-7 bg-[#fbf4f6] border-b lg:border-b-0 lg:border-r border-[#e8c3cd] p-4 sm:p-6 md:p-8 flex flex-col justify-between">
                     <div className="relative aspect-[16/10] w-full overflow-hidden border border-[#d88a9a]/50 bg-[#3b121e]">
                       <img
                         src={activeHero}
                         alt={collection.title}
                         className="w-full h-full object-cover transition-all duration-700"
                       />
-                      <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-md border border-[#d88a9a] font-nav text-[9px] tracking-[0.25em] text-[#a02e46] uppercase">
+                      <div className="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 max-w-[calc(100%-1.25rem)] truncate px-2.5 sm:px-3 py-1 bg-white/90 backdrop-blur-md border border-[#d88a9a] font-nav text-[7px] sm:text-[9px] tracking-[0.16em] sm:tracking-[0.25em] text-[#a02e46] uppercase">
                         CHAPTER 0{index + 1} | {collection.frenchSubtitle}
                       </div>
                     </div>
 
-                    <div className="mt-4">
+                    <div className="mt-3 sm:mt-4">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="font-nav text-[9px] tracking-[0.24em] text-[#8a2b53] uppercase">
+                        <span className="font-nav text-[8px] sm:text-[9px] tracking-[0.2em] sm:tracking-[0.24em] text-[#8a2b53] uppercase">
                           Select Lookbook Frame
                         </span>
-                        <span className="font-nav text-[9px] tracking-[0.2em] text-[#a02e46]">
+                        <span className="font-nav text-[8px] sm:text-[9px] tracking-[0.18em] sm:tracking-[0.2em] text-[#a02e46]">
                           {collection.runwayFrames.length} STILL FRAMES
                         </span>
                       </div>
-                      <div className="grid grid-cols-4 gap-3">
+                      <div className="grid grid-cols-4 gap-2 sm:gap-3">
                         {collection.runwayFrames.map((frameUrl, fIdx) => {
                           const isSelected = activeHero === frameUrl;
                           return (
@@ -98,23 +98,23 @@ export const CollectionsPage: React.FC = () => {
                   </div>
 
                   {/* Right Editorial Narrative */}
-                  <div className="lg:col-span-5 p-8 md:p-10 flex flex-col justify-between bg-white">
+                  <div className="lg:col-span-5 p-5 sm:p-8 md:p-10 flex flex-col justify-between bg-white">
                     <div>
-                      <span className="font-nav text-[10px] tracking-[0.28em] text-[#a02e46] uppercase block mb-2">
+                      <span className="font-nav text-[9px] sm:text-[10px] tracking-[0.24em] sm:tracking-[0.28em] text-[#a02e46] uppercase block mb-2">
                         {collection.season}
                       </span>
-                      <h2 className="font-aura-display text-3xl md:text-4xl text-[#3b121e] mb-2">
+                      <h2 className="font-aura-display text-2xl sm:text-3xl md:text-4xl text-[#3b121e] mb-2">
                         {collection.title}
                       </h2>
-                      <p className="font-couture-subtitle text-xs text-[#8a2b53] uppercase mb-5">
+                      <p className="font-couture-subtitle text-[11px] sm:text-xs text-[#8a2b53] uppercase mb-4 sm:mb-5">
                         {collection.frenchSubtitle}
                       </p>
 
-                      <p className="text-sm text-[#4a121e] leading-relaxed mb-4 font-medium">
+                      <p className="text-xs sm:text-sm text-[#4a121e] leading-relaxed mb-4 font-medium">
                         {collection.description}
                       </p>
 
-                      <div className="p-4 bg-[#fbf4f6] border-l-2 border-[#a02e46] mb-6">
+                      <div className="p-3.5 sm:p-4 bg-[#fbf4f6] border-l-2 border-[#a02e46] mb-5 sm:mb-6">
                         <span className="font-nav text-[9px] tracking-[0.24em] text-[#a02e46] uppercase block mb-1">
                           Creative Direction
                         </span>
@@ -123,27 +123,27 @@ export const CollectionsPage: React.FC = () => {
                         </p>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4 mb-6 py-4 border-y border-[#e8c3cd]/70">
+                      <div className="grid grid-cols-2 gap-4 mb-5 sm:mb-6 py-3.5 sm:py-4 border-y border-[#e8c3cd]/70">
                         <div>
-                          <div className="font-nav text-[9px] tracking-[0.2em] text-[#8a2b53] uppercase">
+                          <div className="font-nav text-[8px] sm:text-[9px] tracking-[0.18em] sm:tracking-[0.2em] text-[#8a2b53] uppercase">
                             Archive Volume
                           </div>
-                          <div className="font-aura-display text-base text-[#3b121e]">
+                          <div className="font-aura-display text-sm sm:text-base text-[#3b121e]">
                             {collection.pieceCount} Couture Looks
                           </div>
                         </div>
 
                         <div>
-                          <div className="font-nav text-[9px] tracking-[0.2em] text-[#8a2b53] uppercase">
+                          <div className="font-nav text-[8px] sm:text-[9px] tracking-[0.18em] sm:tracking-[0.2em] text-[#8a2b53] uppercase">
                             Atelier Craft
                           </div>
-                          <div className="font-aura-display text-base text-[#3b121e]">
+                          <div className="font-aura-display text-sm sm:text-base text-[#3b121e]">
                             {collection.artisanHoursTotal}
                           </div>
                         </div>
                       </div>
 
-                      <div className="mb-6">
+                      <div className="mb-5 sm:mb-6">
                         <span className="font-nav text-[9px] tracking-[0.24em] text-[#8a2b53] uppercase block mb-2">
                           Signature Textiles and Embellishments
                         </span>
@@ -151,7 +151,7 @@ export const CollectionsPage: React.FC = () => {
                           {collection.keyMaterials.map((mat) => (
                             <span
                               key={mat}
-                              className="px-2.5 py-1 bg-[#fce4ec]/60 border border-[#e8c3cd] text-[11px] font-semibold text-[#801c30]"
+                              className="px-2.5 py-1 bg-[#fce4ec]/60 border border-[#e8c3cd] text-[10px] sm:text-[11px] font-semibold text-[#801c30]"
                             >
                               {mat}
                             </span>
@@ -165,14 +165,14 @@ export const CollectionsPage: React.FC = () => {
                         {collection.locationShowcase}
                       </div>
 
-                      <div className="flex flex-col sm:flex-row gap-3">
+                      <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
                         <button
                           onClick={() => {
                             audioEngine.playChimeSound();
                             setBookingCollection(collection);
                             setBookingConfirmed(false);
                           }}
-                          className="flex-1 py-3 px-4 bg-[#a02e46] hover:bg-[#801c30] text-white font-nav text-[10px] tracking-[0.24em] uppercase transition-colors cursor-pointer"
+                          className="flex-1 py-3 px-4 bg-[#a02e46] hover:bg-[#801c30] text-white font-nav text-[10px] tracking-[0.22em] sm:tracking-[0.24em] uppercase transition-colors cursor-pointer"
                         >
                           BOOK PRIVATE VIEWING
                         </button>
@@ -192,17 +192,17 @@ export const CollectionsPage: React.FC = () => {
 
                 {/* Curated Garments Belonging to This Collection */}
                 {collectionProducts.length > 0 && (
-                  <div className="bg-[#fffafc] border-t border-[#e8c3cd] p-6 md:p-8">
-                    <div className="flex items-center justify-between mb-5">
-                      <span className="font-nav text-[10px] tracking-[0.28em] text-[#a02e46] uppercase">
+                  <div className="bg-[#fffafc] border-t border-[#e8c3cd] p-4 sm:p-6 md:p-8">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-4 sm:mb-5">
+                      <span className="font-nav text-[9px] sm:text-[10px] tracking-[0.24em] sm:tracking-[0.28em] text-[#a02e46] uppercase">
                         Featured Creations from {collection.title}
                       </span>
-                      <span className="text-xs text-[#801c30] font-medium">
+                      <span className="text-[11px] sm:text-xs text-[#801c30] font-medium">
                         Select any gown to inspect measurements and acquire
                       </span>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                       {collectionProducts.map((prod) => (
                         <div
                           key={prod.id}
@@ -210,15 +210,15 @@ export const CollectionsPage: React.FC = () => {
                             audioEngine.playHotspotClickSound();
                             openProductModal(prod);
                           }}
-                          className="group bg-white border border-[#e8c3cd] hover:border-[#a02e46] p-4 flex items-center gap-4 cursor-pointer transition-all hover:shadow-md"
+                          className="group bg-white border border-[#e8c3cd] hover:border-[#a02e46] p-3.5 sm:p-4 flex items-center gap-3.5 sm:gap-4 cursor-pointer transition-all hover:shadow-md"
                         >
                           <img
                             src={prod.image}
                             alt={prod.name}
-                            className="w-20 h-28 object-cover border border-[#f8bbd0] shrink-0 group-hover:scale-105 transition-transform"
+                            className="w-18 sm:w-20 h-26 sm:h-28 object-cover border border-[#f8bbd0] shrink-0 group-hover:scale-105 transition-transform"
                           />
                           <div className="flex-1 min-w-0">
-                            <span className="font-nav text-[8px] tracking-[0.2em] text-[#a02e46] uppercase block">
+                            <span className="font-nav text-[8px] tracking-[0.2em] text-[#a02e46] uppercase block truncate">
                               {prod.edition || 'Haute Couture'}
                             </span>
                             <h4 className="font-aura-display text-base text-[#3b121e] group-hover:text-[#a02e46] transition-colors truncate">
@@ -227,7 +227,7 @@ export const CollectionsPage: React.FC = () => {
                             <p className="text-[11px] text-[#801c30] line-clamp-1 mb-2">
                               {prod.tagline}
                             </p>
-                            <div className="flex items-center justify-between">
+                            <div className="flex items-center justify-between gap-2">
                               <span className="font-aura-display text-sm text-[#a02e46]">
                                 {formatCouturePrice(prod.price, currency)}
                               </span>
@@ -251,8 +251,8 @@ export const CollectionsPage: React.FC = () => {
 
       {/* Private Viewing Appointment Modal */}
       {bookingCollection && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#3b121e]/35 backdrop-blur-md">
-          <div className="glass-panel-dark border-2 border-[#d88a9a] bg-white max-w-lg w-full p-8 relative shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3.5 sm:p-4 bg-[#3b121e]/35 backdrop-blur-md">
+          <div className="glass-panel-dark border-2 border-[#d88a9a] bg-white max-w-lg w-full max-h-[90vh] overflow-y-auto p-5 sm:p-8 relative shadow-2xl">
             <button
               onClick={() => setBookingCollection(null)}
               className="absolute top-4 right-4 px-3 py-1 border border-[#e8c3cd] text-[9px] font-nav tracking-[0.2em] uppercase text-[#4a121e] hover:bg-[#fce4ec] cursor-pointer"

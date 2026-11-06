@@ -20,9 +20,9 @@ export const CartDrawer: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-[#3b121e]/25 backdrop-blur-sm animate-fade-in pointer-events-auto">
-      <div className="w-full max-w-md h-full glass-panel-dark border-l-2 border-[#e8c3cd] flex flex-col justify-between p-6 shadow-2xl overflow-hidden bg-[#fffafc]">
+      <div className="w-full max-w-md h-full glass-panel-dark border-l-2 border-[#e8c3cd] flex flex-col justify-between p-4 sm:p-6 shadow-2xl overflow-hidden bg-[#fffafc]">
         <div className="flex items-center justify-between pb-4 border-b border-[#e8c3cd]/60">
-          <h3 className="font-aura-display text-xl font-medium text-[#3b121e] tracking-[0.08em] uppercase">
+          <h3 className="font-aura-display text-lg sm:text-xl font-medium text-[#3b121e] tracking-[0.08em] uppercase">
             SHOPPING BAG
           </h3>
           <button
@@ -36,7 +36,7 @@ export const CartDrawer: React.FC = () => {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto py-4 space-y-4">
+        <div className="flex-1 overflow-y-auto py-4 space-y-3.5 sm:space-y-4">
           {cart.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center p-6">
               <p className="font-aura-display text-xl text-[#3b121e] font-medium mb-2">
@@ -50,24 +50,24 @@ export const CartDrawer: React.FC = () => {
             cart.map((item, idx) => (
               <div
                 key={`${item.product.id}-${item.selectedSize}-${idx}`}
-                className="glass-panel p-4 rounded-none flex gap-4 border border-[#e8c3cd] items-center bg-white"
+                className="glass-panel p-3 sm:p-4 rounded-none flex gap-3 sm:gap-4 border border-[#e8c3cd] items-center bg-white"
               >
                 <img
                   src={item.product.image}
                   alt={item.product.name}
-                  className="w-16 h-22 object-cover rounded-none border border-[#f8bbd0]/50 shrink-0"
+                  className="w-15 sm:w-16 h-20 sm:h-22 object-cover rounded-none border border-[#f8bbd0]/50 shrink-0"
                 />
-                <div className="flex-1 flex flex-col justify-between">
+                <div className="flex-1 min-w-0 flex flex-col justify-between">
                   <div>
-                    <h4 className="text-sm font-serif font-black text-[#3b121e] mb-1">
+                    <h4 className="text-sm font-serif font-black text-[#3b121e] mb-1 truncate">
                       {item.product.name}
                     </h4>
-                    <div className="text-[10px] font-nav tracking-[0.16em] uppercase text-[#8a2b53]">
+                    <div className="text-[9px] sm:text-[10px] font-nav tracking-[0.14em] sm:tracking-[0.16em] uppercase text-[#8a2b53] truncate">
                       Size: {item.selectedSize} | {item.selectedColor.name}
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between mt-3 pt-2 border-t border-[#e8c3cd]/40">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mt-3 pt-2 border-t border-[#e8c3cd]/40">
                     <div className="flex items-center gap-2 border border-[#e8c3cd] px-2 py-0.5">
                       <button
                         onClick={() => updateQuantity(item.product.id, item.selectedSize, -1)}
@@ -92,7 +92,7 @@ export const CartDrawer: React.FC = () => {
 
                     <button
                       onClick={() => removeFromCart(item.product.id, item.selectedSize)}
-                      className="font-nav text-[9px] tracking-[0.18em] uppercase text-gray-400 hover:text-[#a02e46] transition-colors cursor-pointer"
+                      className="font-nav text-[8px] sm:text-[9px] tracking-[0.16em] sm:tracking-[0.18em] uppercase text-gray-400 hover:text-[#a02e46] transition-colors cursor-pointer"
                     >
                       REMOVE
                     </button>

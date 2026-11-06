@@ -35,12 +35,13 @@ export const VideoOpeningScreen: React.FC = () => {
       }
     };
     window.addEventListener('click', handleFirstClick, { once: true });
+    window.addEventListener('touchstart', handleFirstClick, { once: true, passive: true });
 
     const handleScroll = () => {
       const docHeight = Math.max(
         document.body.scrollHeight,
         document.documentElement.scrollHeight,
-        12000
+        window.innerHeight * 2
       );
       const totalScrollable = docHeight - window.innerHeight;
       const currentScroll = window.scrollY || window.pageYOffset || 0;
@@ -67,6 +68,7 @@ export const VideoOpeningScreen: React.FC = () => {
       video.removeEventListener('canplay', startPlay);
       video.removeEventListener('ended', handleEnded);
       window.removeEventListener('click', handleFirstClick);
+      window.removeEventListener('touchstart', handleFirstClick);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -81,7 +83,7 @@ export const VideoOpeningScreen: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-10 flex flex-col justify-between p-6 md:p-10 select-none overflow-hidden bg-[#fbf4f6]"
+      className="fixed inset-0 z-10 flex flex-col justify-between p-4 sm:p-6 md:p-10 select-none overflow-hidden bg-[#fbf4f6]"
       style={{
         opacity: 1,
         willChange: 'opacity',
@@ -98,18 +100,18 @@ export const VideoOpeningScreen: React.FC = () => {
         className="absolute inset-0 w-full h-full object-cover object-top z-0 video-native-hd"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-r from-[#fbf4f6]/40 via-transparent to-[#fbf4f6]/30 z-1 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#fbf4f6]/45 via-transparent to-[#fbf4f6]/30 z-1 pointer-events-none" />
 
-      <div className="absolute left-6 md:left-14 top-[48%] -translate-y-1/2 z-10 pointer-events-none transition-transform duration-500 hover:scale-105">
-        <AuraCoutureVectorLogo className="w-[280px] sm:w-[320px] md:w-[380px] lg:w-[420px] h-auto drop-shadow-sm" />
+      <div className="absolute left-4 sm:left-6 md:left-14 top-[45%] sm:top-[48%] -translate-y-1/2 z-10 pointer-events-none transition-transform duration-500 hover:scale-105">
+        <AuraCoutureVectorLogo className="w-[215px] sm:w-[320px] md:w-[380px] lg:w-[420px] max-w-[78vw] h-auto drop-shadow-sm" />
       </div>
 
       <button
         onClick={handleScrollToBoutique}
-        className="absolute left-6 md:left-14 bottom-10 md:bottom-16 z-20 flex items-center gap-3.5 cursor-pointer group pointer-events-auto border-b border-[#a02e46] pb-1.5"
+        className="absolute left-4 sm:left-6 md:left-14 bottom-8 sm:bottom-10 md:bottom-16 z-20 flex items-center gap-2.5 sm:gap-3.5 cursor-pointer group pointer-events-auto border-b border-[#a02e46] pb-1.5"
         title="Scroll Down to Explore"
       >
-        <span className="font-nav text-[10px] md:text-xs tracking-[0.38em] text-[#a02e46] font-bold uppercase group-hover:text-[#801c30] transition-colors">
+        <span className="font-nav text-[9px] sm:text-[10px] md:text-xs tracking-[0.22em] sm:tracking-[0.38em] text-[#a02e46] font-bold uppercase group-hover:text-[#801c30] transition-colors">
           SCROLL TO ENTER COUTURE
         </span>
         <span className="flex flex-col items-center -space-y-2.5 text-[#a02e46] group-hover:text-[#801c30]">
