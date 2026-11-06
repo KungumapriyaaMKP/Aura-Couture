@@ -4,7 +4,7 @@ import { useCartStore } from '../../store/useCartStore';
 import { audioEngine } from '../../utils/sound';
 
 export const QuickCatalogView: React.FC = () => {
-  const { isCatalogOpen, toggleCatalog, openProductModal, setFocusTarget, currency } = useCartStore();
+  const { isCatalogOpen, toggleCatalog, currency } = useCartStore();
 
   if (!isCatalogOpen) return null;
 
@@ -35,13 +35,7 @@ export const QuickCatalogView: React.FC = () => {
           {PRODUCTS.map((prod) => (
             <div
               key={prod.id}
-              onClick={() => {
-                audioEngine.playHotspotClickSound();
-                setFocusTarget(prod.position3D);
-                toggleCatalog();
-                openProductModal(prod);
-              }}
-              className="group relative glass-panel rounded-none overflow-hidden border border-[#e8c3cd] hover:border-[#f09bb5] transition-all duration-500 cursor-pointer flex flex-col justify-between bg-white hover:-translate-y-1 hover:shadow-[0_0_26px_rgba(244,143,177,0.65),0_0_55px_rgba(160,46,70,0.28)]"
+              className="group relative glass-panel rounded-none overflow-hidden border border-[#e8c3cd] hover:border-[#f09bb5] transition-all duration-500 cursor-default select-none flex flex-col justify-between bg-white hover:-translate-y-1 hover:shadow-[0_0_26px_rgba(244,143,177,0.65),0_0_55px_rgba(160,46,70,0.28)]"
             >
               <div className="relative h-64 w-full shrink-0 overflow-hidden bg-[#fbf4f6] border-b border-[#e8c3cd]/50">
                 <img
